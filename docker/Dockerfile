@@ -8,4 +8,4 @@ EXPOSE 8080
 COPY . /ratelimiter
 WORKDIR /ratelimiter
 
-CMD ["python", "/uatelimiter/app.py"]
+CMD ["python", "/ratelimiter/app.py"]

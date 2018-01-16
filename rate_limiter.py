@@ -24,11 +24,13 @@ class RateLimiter(object):
 
         try:
             remaining = self.limit - int(self.redis.get(key))
+            print('Redis Key:{0}'.format(self.redis.get(key)))
         except (ValueError, TypeError):
             remaining = self.limit
             self.redis.set(key, 0)
 
         expires_in = self.redis.ttl(key)
+        print('Expires in:{0}'.format(expires_in))
 
         if expires_in == -1:
             self.redis.expire(key, self.window)
